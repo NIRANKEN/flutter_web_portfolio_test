@@ -12,13 +12,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'にらんけんの巣窟',
+      title: 'やぁ',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(
-            seedColor: const Color.fromARGB(255, 125, 114, 134)),
+            seedColor: const Color.fromARGB(255, 25, 140, 170)),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'にらんけんの巣窟'),
+      home: const MyHomePage(title: 'やぁ'),
     );
   }
 }

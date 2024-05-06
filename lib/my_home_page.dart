@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_web_portfolio_test/main_container.dart';
+import 'package:flutter_web_portfolio_test/demo_custom_paint.dart';
 import 'package:flutter_web_portfolio_test/pages/about_page.dart';
 import 'package:flutter_web_portfolio_test/pages/contact_page.dart';
 import 'package:flutter_web_portfolio_test/pages/top_page.dart';
@@ -15,28 +15,55 @@ class MyHomePage extends StatefulWidget {
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _MyHomePageState extends State<MyHomePage>
+    with SingleTickerProviderStateMixin {
   late final VideoPlayerController _videoController;
   late Future<void> _initializeVideoPlayerFuture;
-  bool isLoading = true;
+  // bool isLoading = true;
+  bool isLoading = false;
   bool isPlaying = false;
   bool isScrolling = false;
 
   final PageController _pageController = PageController(
     initialPage: 0,
   );
+  late final AnimationController _animationController = AnimationController(
+    duration: const Duration(milliseconds: 1500),
+    vsync: this,
+  );
+  late final Animation<double> _animation;
+  bool isAnimationCompleted = false;
 
   @override
   void initState() {
     super.initState();
     _videoController = VideoPlayerController.asset('assets/videos/loading.mp4');
     _initializeVideoPlayerFuture = _videoController.initialize();
+    _animation = CurvedAnimation(
+      parent: _animationController,
+      curve: Curves.fastOutSlowIn,
+    );
+    _animationController.addStatusListener((status) {
+      if (status == AnimationStatus.completed) {
+        setState(() {
+          isAnimationCompleted = true;
+        });
+      }
+    });
+    _animationController.forward();
+
+    _pageController.addListener(() {
+      // ページが変更されたときに、アニメーションを再生する
+      _animationController.reset();
+      _animationController.forward();
+    });
   }
 
   @override
   void dispose() {
     _videoController.dispose();
     _pageController.dispose();
+    _animationController.dispose();
     super.dispose();
   }
 
@@ -45,23 +72,30 @@ class _MyHomePageState extends State<MyHomePage> {
     return isLoading
         ? _loadingWidget()
         : Scaffold(
-            body: Center(
-              child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    _titleContainer(context),
-                    Expanded(
-                        flex: 1,
-                        child: PageView(
-                            controller: _pageController,
-                            scrollDirection: Axis.vertical,
-                            children: const [
-                              TopPage(),
-                              AboutPage(),
-                              ContactPage(),
-                            ]))
-                  ]),
-            ),
+            body: Stack(children: [
+              const DemoCustomPaint(),
+              Center(
+                child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      _titleContainer(context),
+                      Expanded(
+                          flex: 1,
+                          child: SizeTransition(
+                              sizeFactor: _animation,
+                              axis: Axis.horizontal,
+                              axisAlignment: -1,
+                              child: PageView(
+                                  controller: _pageController,
+                                  scrollDirection: Axis.vertical,
+                                  children: const [
+                                    TopPage(),
+                                    AboutPage(),
+                                    ContactPage(),
+                                  ])))
+                    ]),
+              ),
+            ]),
           );
   }
 
@@ -102,8 +136,13 @@ class _MyHomePageState extends State<MyHomePage> {
             children: [
               Expanded(
                 flex: 1,
-                child: Text('Title',
-                    style: Theme.of(context).textTheme.headlineMedium),
+                child: Text(
+                  'にらんけんのポートフォリオ',
+                  style: TextStyle(
+                      color: Theme.of(context).colorScheme.primary,
+                      fontSize: 32.0,
+                      fontWeight: FontWeight.bold),
+                ),
               ),
               TitleButton(
                   title: "Top",

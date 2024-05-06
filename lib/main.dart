@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_web_portfolio_test/constants.dart';
 import 'my_home_page.dart';
 
 void main() {
@@ -14,11 +15,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'やぁ',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(
-            seedColor: const Color.fromARGB(255, 25, 140, 170)),
-        useMaterial3: true,
-      ),
-      home: const MyHomePage(title: 'やぁ'),
+          colorScheme: ColorScheme.fromSeed(seedColor: Constants.mainColor),
+          useMaterial3: true,
+          fontFamily: 'Noto Sans JP'),
+      home: const MyHomePage(title: 'べっ、別にポートフォリオじゃないんだからね！'),
     );
   }
 }

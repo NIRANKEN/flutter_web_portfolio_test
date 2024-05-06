@@ -12,10 +12,11 @@ class TitleButton extends StatelessWidget {
       onPressed: onPressed,
       style: OutlinedButton.styleFrom(
         side: const BorderSide(color: Colors.transparent),
+        padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
       ),
       child: Text(title,
           style: TextStyle(
-              color: Theme.of(context).colorScheme.primary, fontSize: 16)),
+              color: Theme.of(context).colorScheme.primary, fontSize: 18)),
     );
   }
 }

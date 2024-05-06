@@ -12,7 +12,7 @@ class ContactPage extends StatelessWidget {
             child: Text(
           "Contact",
           style: TextStyle(
-              color: Theme.of(context).colorScheme.secondary, fontSize: 64),
+              color: Theme.of(context).colorScheme.primary, fontSize: 64),
         )));
   }
 }

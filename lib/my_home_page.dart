@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_web_portfolio_test/demo_custom_paint.dart';
+import 'package:flutter_web_portfolio_test/background_custom_paint.dart';
 import 'package:flutter_web_portfolio_test/pages/about_page.dart';
 import 'package:flutter_web_portfolio_test/pages/contact_page.dart';
 import 'package:flutter_web_portfolio_test/pages/top_page.dart';
@@ -73,7 +73,7 @@ class _MyHomePageState extends State<MyHomePage>
         ? _loadingWidget()
         : Scaffold(
             body: Stack(children: [
-              const DemoCustomPaint(),
+              const BackgroundCustomPaint(),
               Center(
                 child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,

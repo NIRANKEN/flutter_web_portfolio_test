@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_web_portfolio_test/main_container.dart';
-import 'package:flutter_web_portfolio_test/size_transition_example.dart';
 
 class TopPage extends StatelessWidget {
   const TopPage({super.key});
@@ -30,7 +29,7 @@ class TopPage extends StatelessWidget {
                         color: Theme.of(context).colorScheme.primary,
                         fontSize: 128)),
               ],
-            )
+            ),
           ],
         ));
   }

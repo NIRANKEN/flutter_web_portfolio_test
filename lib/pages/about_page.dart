@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_web_portfolio_test/main_container.dart';
-import 'package:flutter_web_portfolio_test/size_transition_example.dart';
 
 class AboutPage extends StatelessWidget {
   const AboutPage({super.key});

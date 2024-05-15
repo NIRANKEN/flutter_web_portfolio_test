@@ -27,4 +27,4 @@ jobs:
           repoToken: "${{ secrets.GITHUB_TOKEN }}"
           firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT_NIRANKEN_PORTFOLIO }}"
           channelId: live
-          projectId: niranken_portfolio
+          projectId: niranken-portfolio

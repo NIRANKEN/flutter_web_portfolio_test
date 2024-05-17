@@ -107,6 +107,8 @@ class _MyHomePageState extends State<MyHomePage>
                 future: _initializeVideoPlayerFuture,
                 builder: (context, snapshot) {
                   if (snapshot.connectionState == ConnectionState.done) {
+                    _videoController.setLooping(true);
+                    _videoController.setVolume(0.0);
                     _videoController.play();
                     Future.delayed(const Duration(seconds: 6), () {
                       _videoController.pause();

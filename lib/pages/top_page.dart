@@ -14,20 +14,32 @@ class TopPage extends StatelessWidget {
           children: [
             Row(children: [
               const SizedBox(width: 64),
-              Text("それっぽい感じの",
-                  style: TextStyle(
-                      color: Theme.of(context).colorScheme.primary,
-                      fontSize: 128)),
+              SizedBox(
+                width: MediaQuery.of(context).size.width * 0.5,
+                child: FittedBox(
+                  fit: BoxFit.fitWidth,
+                  child: Text("それっぽい感じの",
+                      style: TextStyle(
+                        color: Theme.of(context).colorScheme.primary,
+                        // fontSize: 128
+                      )),
+                ),
+              ),
             ]),
             const SizedBox(height: 32),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Text("ポートフォリオかも",
-                    style: TextStyle(
-                        color: Theme.of(context).colorScheme.primary,
-                        fontSize: 128)),
+                SizedBox(
+                  width: MediaQuery.of(context).size.width * 0.55,
+                  child: FittedBox(
+                      fit: BoxFit.fitWidth,
+                      child: Text("ポートフォリオかも",
+                          style: TextStyle(
+                            color: Theme.of(context).colorScheme.primary,
+                          ))),
+                ),
               ],
             ),
           ],

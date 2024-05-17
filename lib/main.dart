@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Constants.mainColor),
           useMaterial3: true,
           fontFamily: 'Noto Sans JP'),
-      home: const MyHomePage(title: 'べっ、別にポートフォリオじゃないんだからね！'),
+      home: const MyHomePage(title: 'にらんけんのポートフォリオ'),
     );
   }
 }

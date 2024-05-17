@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_web_portfolio_test/utils/display_utils.dart';
 
 class MainContainer extends StatelessWidget {
   const MainContainer({
@@ -15,7 +16,9 @@ class MainContainer extends StatelessWidget {
     return Container(
       width: MediaQuery.of(context).size.width * 0.8,
       height: MediaQuery.of(context).size.height * 0.9,
-      margin: const EdgeInsets.all(64),
+      margin: DisplayUtils.isLargeSize(context)
+          ? const EdgeInsets.all(64)
+          : const EdgeInsets.all(32),
       color: color,
       child: child,
     );

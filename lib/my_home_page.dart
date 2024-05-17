@@ -4,6 +4,7 @@ import 'package:flutter_web_portfolio_test/pages/about_page.dart';
 import 'package:flutter_web_portfolio_test/pages/contact_page.dart';
 import 'package:flutter_web_portfolio_test/pages/top_page.dart';
 import 'package:flutter_web_portfolio_test/title_button.dart';
+import 'package:flutter_web_portfolio_test/utils/display_utils.dart';
 import 'package:video_player/video_player.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -137,10 +138,14 @@ class _MyHomePageState extends State<MyHomePage>
               Expanded(
                 flex: 1,
                 child: Text(
-                  'にらんけんのポートフォリオ',
+                  widget.title,
                   style: TextStyle(
                       color: Theme.of(context).colorScheme.primary,
-                      fontSize: 32.0,
+                      fontSize: DisplayUtils.isLargeSize(context)
+                          ? 32.0
+                          : DisplayUtils.isMediumSize(context)
+                              ? 24.0
+                              : 18.0,
                       fontWeight: FontWeight.bold),
                 ),
               ),
@@ -149,31 +154,37 @@ class _MyHomePageState extends State<MyHomePage>
                   onPressed: () {
                     _pageController.animateToPage(
                       0,
-                      duration: const Duration(milliseconds: 500),
+                      duration: const Duration(milliseconds: 250),
                       curve: Curves.ease,
                     );
                   }),
-              const SizedBox(width: 16.0),
+              DisplayUtils.isMediumSize(context)
+                  ? const SizedBox(width: 16.0)
+                  : const SizedBox(width: 8.0),
               TitleButton(
                   title: "About",
                   onPressed: () {
                     _pageController.animateToPage(
                       1,
-                      duration: const Duration(milliseconds: 500),
+                      duration: const Duration(milliseconds: 250),
                       curve: Curves.ease,
                     );
                   }),
-              const SizedBox(width: 16.0),
+              DisplayUtils.isMediumSize(context)
+                  ? const SizedBox(width: 16.0)
+                  : const SizedBox(width: 8.0),
               TitleButton(
                   title: "Contact",
                   onPressed: () {
                     _pageController.animateToPage(
                       2,
-                      duration: const Duration(milliseconds: 500),
+                      duration: const Duration(milliseconds: 250),
                       curve: Curves.ease,
                     );
                   }),
-              const SizedBox(width: 16.0),
+              DisplayUtils.isMediumSize(context)
+                  ? const SizedBox(width: 16.0)
+                  : const SizedBox(width: 8.0),
             ],
           ))
     ]);

@@ -7,12 +7,15 @@ class DisplayUtils {
   }
 
   static bool isLargeSize(BuildContext context) {
-    return MediaQuery.of(context).size.width > 1024 &&
-        MediaQuery.of(context).size.height > 768;
+    return isLargeWidth(context) && MediaQuery.of(context).size.height > 768;
   }
 
   static bool isMediumSize(BuildContext context) {
     return isMediumWidth(context) && MediaQuery.of(context).size.height > 540;
+  }
+
+  static bool isLargeWidth(BuildContext context) {
+    return MediaQuery.of(context).size.width > 1024;
   }
 
   static bool isMediumWidth(BuildContext context) {

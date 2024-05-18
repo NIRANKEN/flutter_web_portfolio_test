@@ -20,7 +20,8 @@ class _MyHomePageState extends State<MyHomePage>
     with SingleTickerProviderStateMixin {
   late final VideoPlayerController _videoController;
   late Future<void> _initializeVideoPlayerFuture;
-  bool isLoading = true;
+  // bool isLoading = true;
+  bool isLoading = false;
   bool isPlaying = false;
   bool isScrolling = false;
 

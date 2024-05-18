@@ -24,6 +24,9 @@ class SampleVoiceButtonState extends State<SampleVoiceButton> {
 
   @override
   void dispose() {
+    if (isPlaying) {
+      _audioPlayer.stop();
+    }
     _audioPlayer.dispose();
     super.dispose();
   }

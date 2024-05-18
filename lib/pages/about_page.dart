@@ -30,8 +30,8 @@ class AboutPage extends StatelessWidget {
                         fit: FlexFit.tight,
                         child: _pictureAndSampleVoice(context),
                       ),
-                      Flexible(
-                          fit: FlexFit.loose, child: _contentsCard(context)),
+                      FittedBox(
+                          fit: BoxFit.contain, child: _contentsCard(context)),
                     ])
               : Column(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -92,9 +92,14 @@ class AboutPage extends StatelessWidget {
       "今後の目標🚩: 自分ならではの特技を作ること！それとコミュ障からの脱却。"
     ];
     return SizedBox(
-      width: DisplayUtils.isMediumSize(context)
-          ? MediaQuery.of(context).size.width * 0.5
+      width: DisplayUtils.isMediumWidth(context)
+          ? MediaQuery.of(context).size.width * 0.6
           : MediaQuery.of(context).size.width * 0.9,
+      height: DisplayUtils.isLargeWidth(context)
+          ? MediaQuery.of(context).size.height * 0.42
+          : DisplayUtils.isMediumWidth(context)
+              ? MediaQuery.of(context).size.height * 0.6
+              : null,
       child: Card(
           color: Colors.white,
           margin: const EdgeInsets.all(16),

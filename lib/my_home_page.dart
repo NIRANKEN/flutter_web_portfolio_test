@@ -20,8 +20,8 @@ class _MyHomePageState extends State<MyHomePage>
     with SingleTickerProviderStateMixin {
   late final VideoPlayerController _videoController;
   late Future<void> _initializeVideoPlayerFuture;
-  // bool isLoading = true;
-  bool isLoading = false;
+  bool isLoading = true;
+  // bool isLoading = false;
   bool isPlaying = false;
   bool isScrolling = false;
 
@@ -110,7 +110,7 @@ class _MyHomePageState extends State<MyHomePage>
                     _videoController.setLooping(true);
                     _videoController.setVolume(0.0);
                     _videoController.play();
-                    Future.delayed(const Duration(seconds: 3), () {
+                    Future.delayed(const Duration(seconds: 4), () {
                       _videoController.pause();
                       setState(() {
                         isLoading = false;
@@ -121,10 +121,34 @@ class _MyHomePageState extends State<MyHomePage>
                         padding: const EdgeInsets.all(16.0),
                         width: MediaQuery.of(context).size.width * 0.9,
                         height: MediaQuery.of(context).size.height * 0.9,
-                        child: AspectRatio(
-                          aspectRatio: _videoController.value.aspectRatio,
-                          child: VideoPlayer(_videoController),
-                        ));
+                        child: Stack(children: [
+                          AspectRatio(
+                            aspectRatio: _videoController.value.aspectRatio,
+                            child: VideoPlayer(_videoController),
+                          ),
+                          Positioned(
+                            bottom: 32.0,
+                            right: 0,
+                            child: OutlinedButton(
+                                style: OutlinedButton.styleFrom(
+                                  // side: const BorderSide(color: Colors.white),
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 32, vertical: 16),
+                                ),
+                                onPressed: () {
+                                  setState(() {
+                                    isLoading = false;
+                                    isPlaying = false;
+                                  });
+                                },
+                                child: const Text(
+                                  "すきっぷ -> ",
+                                  style: TextStyle(
+                                    fontSize: 24.0,
+                                  ),
+                                )),
+                          ),
+                        ]));
                   } else {
                     return const CircularProgressIndicator();
                   }

@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_web_portfolio_test/main_container.dart';
+import 'package:flutter_web_portfolio_test/sample_voice_button.dart';
 import 'package:flutter_web_portfolio_test/utils/display_utils.dart';
 
 class AboutPage extends StatelessWidget {
@@ -40,6 +41,10 @@ class AboutPage extends StatelessWidget {
                   children: [
                       _pictureAndSampleVoice(context),
                       _contentsCard(context),
+                      if (DisplayUtils.isExtraLarge(context))
+                        const Text("おっきい！すごくおっきいよぉ！！",
+                            style:
+                                TextStyle(color: Colors.white, fontSize: 48)),
                     ])
         ]));
   }
@@ -76,7 +81,7 @@ class AboutPage extends StatelessWidget {
                               : MediaQuery.of(context).size.width * 0.25,
                       fit: BoxFit.cover),
                   const SizedBox(height: 16),
-                  _sampleVoiceButton(context, "サンプルボイス", () {}),
+                  const SampleVoiceButton(),
                 ])));
   }
 
@@ -134,39 +139,39 @@ class AboutPage extends StatelessWidget {
     );
   }
 
-  Widget _sampleVoiceButton(
-      BuildContext context, String text, Function() onPressed) {
-    return Container(
-        margin: const EdgeInsets.all(4),
-        child: OutlinedButton(
-          style: OutlinedButton.styleFrom(
-            side: const BorderSide(color: Colors.white),
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-            maximumSize: DisplayUtils.isLargeSize(context)
-                ? const Size(184, 48)
-                : Size(max(MediaQuery.of(context).size.width * 0.25, 120), 32),
-            minimumSize: DisplayUtils.isLargeSize(context)
-                ? const Size(184, 48)
-                : Size(max(MediaQuery.of(context).size.width * 0.25, 120), 32),
-          ),
-          onPressed: onPressed,
-          child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Text(text,
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: DisplayUtils.isLargeSize(context)
-                            ? 16
-                            : DisplayUtils.isMediumSize(context)
-                                ? 14
-                                : 10)),
-                const SizedBox(width: 4),
-                Icon(Icons.play_arrow,
-                    color: Colors.white,
-                    size: DisplayUtils.isMediumSize(context) ? 18 : 12),
-              ]),
-        ));
-  }
+  // Widget _sampleVoiceButton(
+  //     BuildContext context, String text, Function() onPressed) {
+  //   return Container(
+  //       margin: const EdgeInsets.all(4),
+  //       child: OutlinedButton(
+  //         style: OutlinedButton.styleFrom(
+  //           side: const BorderSide(color: Colors.white),
+  //           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+  //           maximumSize: DisplayUtils.isLargeSize(context)
+  //               ? const Size(184, 48)
+  //               : Size(max(MediaQuery.of(context).size.width * 0.25, 120), 32),
+  //           minimumSize: DisplayUtils.isLargeSize(context)
+  //               ? const Size(184, 48)
+  //               : Size(max(MediaQuery.of(context).size.width * 0.25, 120), 32),
+  //         ),
+  //         onPressed: onPressed,
+  //         child: Row(
+  //             mainAxisAlignment: MainAxisAlignment.center,
+  //             crossAxisAlignment: CrossAxisAlignment.center,
+  //             children: [
+  //               Text(text,
+  //                   style: TextStyle(
+  //                       color: Colors.white,
+  //                       fontSize: DisplayUtils.isLargeSize(context)
+  //                           ? 16
+  //                           : DisplayUtils.isMediumSize(context)
+  //                               ? 14
+  //                               : 10)),
+  //               const SizedBox(width: 4),
+  //               Icon(Icons.play_arrow,
+  //                   color: Colors.white,
+  //                   size: DisplayUtils.isMediumSize(context) ? 18 : 12),
+  //             ]),
+  //       ));
+  // }
 }

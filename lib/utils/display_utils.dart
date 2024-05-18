@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
 
 class DisplayUtils {
+  static bool isExtraLarge(BuildContext context) {
+    return MediaQuery.of(context).size.width > 1920 &&
+        MediaQuery.of(context).size.height > 1080;
+  }
+
   static bool isLargeSize(BuildContext context) {
     return MediaQuery.of(context).size.width > 1024 &&
         MediaQuery.of(context).size.height > 768;

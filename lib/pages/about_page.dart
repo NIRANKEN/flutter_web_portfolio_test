@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_web_portfolio_test/main_container.dart';
 import 'package:flutter_web_portfolio_test/sample_voice_button.dart';
@@ -23,7 +21,7 @@ class AboutPage extends StatelessWidget {
                     fontSize: DisplayUtils.isLargeSize(context) ? 72 : 48),
               ),
             ),
-          DisplayUtils.isMediumSize(context)
+          DisplayUtils.isMediumWidth(context)
               ? Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -42,7 +40,7 @@ class AboutPage extends StatelessWidget {
                       _pictureAndSampleVoice(context),
                       _contentsCard(context),
                       if (DisplayUtils.isExtraLarge(context))
-                        const Text("おっきい！すごくおっきいよぉ！！",
+                        const Text("おっきい！すごくおっきいよぉ！！(画面が)",
                             style:
                                 TextStyle(color: Colors.white, fontSize: 48)),
                     ])
@@ -51,8 +49,6 @@ class AboutPage extends StatelessWidget {
 
   Widget _pictureAndSampleVoice(BuildContext context) {
     return SizedBox(
-        // width: MediaQuery.of(context).size.width * 0.3,
-        // height: MediaQuery.of(context).size.height * 0.5,
         child: Padding(
             padding: const EdgeInsets.all(8),
             child: Column(
@@ -138,40 +134,4 @@ class AboutPage extends StatelessWidget {
           )),
     );
   }
-
-  // Widget _sampleVoiceButton(
-  //     BuildContext context, String text, Function() onPressed) {
-  //   return Container(
-  //       margin: const EdgeInsets.all(4),
-  //       child: OutlinedButton(
-  //         style: OutlinedButton.styleFrom(
-  //           side: const BorderSide(color: Colors.white),
-  //           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-  //           maximumSize: DisplayUtils.isLargeSize(context)
-  //               ? const Size(184, 48)
-  //               : Size(max(MediaQuery.of(context).size.width * 0.25, 120), 32),
-  //           minimumSize: DisplayUtils.isLargeSize(context)
-  //               ? const Size(184, 48)
-  //               : Size(max(MediaQuery.of(context).size.width * 0.25, 120), 32),
-  //         ),
-  //         onPressed: onPressed,
-  //         child: Row(
-  //             mainAxisAlignment: MainAxisAlignment.center,
-  //             crossAxisAlignment: CrossAxisAlignment.center,
-  //             children: [
-  //               Text(text,
-  //                   style: TextStyle(
-  //                       color: Colors.white,
-  //                       fontSize: DisplayUtils.isLargeSize(context)
-  //                           ? 16
-  //                           : DisplayUtils.isMediumSize(context)
-  //                               ? 14
-  //                               : 10)),
-  //               const SizedBox(width: 4),
-  //               Icon(Icons.play_arrow,
-  //                   color: Colors.white,
-  //                   size: DisplayUtils.isMediumSize(context) ? 18 : 12),
-  //             ]),
-  //       ));
-  // }
 }

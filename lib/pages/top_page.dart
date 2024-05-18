@@ -21,11 +21,6 @@ class TopPageState extends State<TopPage> {
     _initializeVideoPlayerFuture = _videoController.initialize();
   }
 
-  // Future<void> _initializeVideoPlayer() async {
-  //   await _videoController.initialize();
-  //   await Future.delayed(const Duration(seconds: 1));
-  // }
-
   @override
   dispose() {
     _videoController.dispose();
@@ -48,7 +43,7 @@ class TopPageState extends State<TopPage> {
                   width: MediaQuery.of(context).size.width * 0.4,
                   child: FittedBox(
                     fit: BoxFit.fitWidth,
-                    child: Text("Flutter Webでつくったよ。",
+                    child: Text("Flutter Webでつくったよ(建築中)",
                         style: TextStyle(
                             color: Theme.of(context).colorScheme.primary)),
                   ),
@@ -74,9 +69,6 @@ class TopPageState extends State<TopPage> {
               width: DisplayUtils.isMediumWidth(context)
                   ? MediaQuery.of(context).size.width * 0.5
                   : MediaQuery.of(context).size.width * 0.8,
-              // height: DisplayUtils.isMediumSize(context)
-              //     ? MediaQuery.of(context).size.height * 0.5
-              //     : MediaQuery.of(context).size.height * 0.8,
               child: AspectRatio(
                 aspectRatio: _videoController.value.aspectRatio,
                 child: VideoPlayer(_videoController),

@@ -20,8 +20,7 @@ class _MyHomePageState extends State<MyHomePage>
     with SingleTickerProviderStateMixin {
   late final VideoPlayerController _videoController;
   late Future<void> _initializeVideoPlayerFuture;
-  // bool isLoading = true;
-  bool isLoading = false;
+  bool isLoading = true;
   bool isPlaying = false;
   bool isScrolling = false;
 
@@ -110,7 +109,7 @@ class _MyHomePageState extends State<MyHomePage>
                     _videoController.setLooping(true);
                     _videoController.setVolume(0.0);
                     _videoController.play();
-                    Future.delayed(const Duration(seconds: 6), () {
+                    Future.delayed(const Duration(seconds: 3), () {
                       _videoController.pause();
                       setState(() {
                         isLoading = false;

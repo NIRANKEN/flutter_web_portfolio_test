@@ -3,7 +3,8 @@ import 'package:flutter_web_portfolio_test/background_custom_paint.dart';
 import 'package:flutter_web_portfolio_test/pages/about_page.dart';
 import 'package:flutter_web_portfolio_test/pages/contact_page.dart';
 import 'package:flutter_web_portfolio_test/pages/top_page.dart';
-import 'package:flutter_web_portfolio_test/title_button.dart';
+import 'package:flutter_web_portfolio_test/pages/works_page.dart';
+import 'package:flutter_web_portfolio_test/components/title_button.dart';
 import 'package:flutter_web_portfolio_test/utils/display_utils.dart';
 import 'package:video_player/video_player.dart';
 
@@ -21,7 +22,6 @@ class _MyHomePageState extends State<MyHomePage>
   late final VideoPlayerController _videoController;
   late Future<void> _initializeVideoPlayerFuture;
   bool isLoading = true;
-  // bool isLoading = false;
   bool isPlaying = false;
   bool isScrolling = false;
 
@@ -92,6 +92,7 @@ class _MyHomePageState extends State<MyHomePage>
                                   children: const [
                                     TopPage(),
                                     AboutPage(),
+                                    WorksPage(),
                                     ContactPage(),
                                   ])))
                     ]),
@@ -200,10 +201,22 @@ class _MyHomePageState extends State<MyHomePage>
                   ? const SizedBox(width: 16.0)
                   : const SizedBox(width: 8.0),
               TitleButton(
-                  title: "Contact",
+                  title: "Works",
                   onPressed: () {
                     _pageController.animateToPage(
                       2,
+                      duration: const Duration(milliseconds: 250),
+                      curve: Curves.ease,
+                    );
+                  }),
+              DisplayUtils.isMediumSize(context)
+                  ? const SizedBox(width: 16.0)
+                  : const SizedBox(width: 8.0),
+              TitleButton(
+                  title: "Contact",
+                  onPressed: () {
+                    _pageController.animateToPage(
+                      3,
                       duration: const Duration(milliseconds: 250),
                       curve: Curves.ease,
                     );

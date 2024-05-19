@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_web_portfolio_test/components/page_title.dart';
 import 'package:flutter_web_portfolio_test/main_container.dart';
 import 'package:flutter_web_portfolio_test/utils/display_utils.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -12,13 +13,8 @@ class ContactPage extends StatelessWidget {
         color: Colors.white,
         child: Column(
           children: [
-            Container(
-              margin: const EdgeInsets.fromLTRB(32, 32, 32, 32),
-              child: Text("Contact",
-                  style: TextStyle(
-                      color: Theme.of(context).colorScheme.primary,
-                      fontSize: DisplayUtils.isLargeSize(context) ? 72 : 48)),
-            ),
+            PageTitle(
+                title: "Contact", color: Theme.of(context).colorScheme.primary),
             Container(
               margin: const EdgeInsets.all(32.0),
               child: GestureDetector(

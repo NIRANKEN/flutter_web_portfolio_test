@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_web_portfolio_test/components/page_title.dart';
 import 'package:flutter_web_portfolio_test/main_container.dart';
-import 'package:flutter_web_portfolio_test/sample_voice_button.dart';
+import 'package:flutter_web_portfolio_test/components/sample_voice_button.dart';
 import 'package:flutter_web_portfolio_test/utils/display_utils.dart';
 
 class AboutPage extends StatelessWidget {
@@ -11,16 +12,7 @@ class AboutPage extends StatelessWidget {
     return MainContainer(
         color: Theme.of(context).colorScheme.inversePrimary,
         child: Column(children: [
-          if (DisplayUtils.isMediumSize(context))
-            Container(
-              margin: const EdgeInsets.fromLTRB(32, 32, 32, 16),
-              child: Text(
-                "About",
-                style: TextStyle(
-                    color: Colors.white,
-                    fontSize: DisplayUtils.isLargeSize(context) ? 72 : 48),
-              ),
-            ),
+          const PageTitle(title: "About"),
           DisplayUtils.isMediumWidth(context)
               ? Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,

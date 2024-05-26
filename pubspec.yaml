@@ -65,6 +65,7 @@ flutter:
     - assets/videos/intro.mp4
     - assets/images/profile.png
     - assets/images/misskey.png
+    - assets/images/youtube_social_icon_red.png
     - assets/images/works1.png
     - assets/images/works2.png
     - assets/images/works3.png

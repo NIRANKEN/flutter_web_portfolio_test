@@ -23,7 +23,7 @@ class WorksPageState extends State<WorksPage>
   int _pageIdx = 0;
   double _loadingPercentage = 0;
   bool _isAnimating = true;
-  int _animationCount = 0;
+  int _animationStartIdx = 0;
 
   @override
   void initState() {
@@ -48,19 +48,22 @@ class WorksPageState extends State<WorksPage>
   }
 
   Future<void> _animate() async {
-    for (int i = 0; i < 6; i++) {
+    for (int i = _animationStartIdx; i < 7; i++) {
       await Future.delayed(const Duration(seconds: 1));
       if (!_isAnimating) {
         return;
       }
       setState(() {
-        _loadingPercentage = (i + 1) / 6;
-        _animationCount = i;
+        if (i < 6) {
+          _loadingPercentage = (i + 1) / 6;
+        }
+        _animationStartIdx = i + 1;
       });
     }
     setState(() {
       _pageIdx = (_pageIdx + 1) % 3;
       _loadingPercentage = 0;
+      _animationStartIdx = 0;
     });
     _animationController.reset();
     _animationController.forward();
@@ -87,11 +90,14 @@ class WorksPageState extends State<WorksPage>
             children: [
               const PageTitle(title: "Works"),
               _autoAnimationComponent(_workCards()[_pageIdx]),
-              LinearProgressIndicator(
-                value: _loadingPercentage,
-                valueColor: const AlwaysStoppedAnimation<Color>(Colors.white),
-                backgroundColor: Colors.grey,
-              ),
+              Container(
+                margin: const EdgeInsets.all(16),
+                child: LinearProgressIndicator(
+                  value: _loadingPercentage,
+                  valueColor: const AlwaysStoppedAnimation<Color>(Colors.white),
+                  backgroundColor: Colors.grey,
+                ),
+              )
             ],
           ),
           Positioned(
@@ -133,7 +139,6 @@ class WorksPageState extends State<WorksPage>
       child: Column(
         children: [
           Image.asset(assetPath,
-              // width: MediaQuery.of(context).size.width * 0.8,
               height: DisplayUtils.isLargeSize(context)
                   ? MediaQuery.of(context).size.height * 0.5
                   : MediaQuery.of(context).size.height * 0.4),

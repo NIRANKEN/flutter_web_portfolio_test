@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_web_portfolio_test/components/page_title.dart';
+import 'package:flutter_web_portfolio_test/components/sns_card.dart';
 import 'package:flutter_web_portfolio_test/main_container.dart';
 import 'package:flutter_web_portfolio_test/components/sample_voice_button.dart';
 import 'package:flutter_web_portfolio_test/utils/display_utils.dart';
@@ -84,51 +85,65 @@ class AboutPage extends StatelessWidget {
       "今後の目標🚩: 自分ならではの特技を作ること！それとコミュ障からの脱却。"
     ];
     return SizedBox(
-      width: DisplayUtils.isMediumWidth(context)
-          ? MediaQuery.of(context).size.width * 0.6
-          : MediaQuery.of(context).size.width * 0.9,
-      height: DisplayUtils.isLargeWidth(context)
-          ? MediaQuery.of(context).size.height * 0.42
-          : DisplayUtils.isMediumWidth(context)
-              ? MediaQuery.of(context).size.height * 0.6
-              : null,
-      child: Card(
-          color: Colors.white,
-          margin: const EdgeInsets.all(16),
-          child: Padding(
-            padding: DisplayUtils.isLargeSize(context)
-                ? const EdgeInsets.all(32)
-                : const EdgeInsets.all(16),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  texts.join("\n"),
-                  style: TextStyle(
-                      color: Theme.of(context).colorScheme.primary,
-                      fontSize: DisplayUtils.isLargeSize(context)
-                          ? 20
-                          : DisplayUtils.isMediumSize(context)
-                              ? 16
-                              : 12),
+        width: DisplayUtils.isMediumWidth(context)
+            ? MediaQuery.of(context).size.width * 0.6
+            : MediaQuery.of(context).size.width * 0.9,
+        height: DisplayUtils.isLargeWidth(context)
+            ? MediaQuery.of(context).size.height * 0.5
+            : DisplayUtils.isMediumWidth(context)
+                ? MediaQuery.of(context).size.height * 0.6
+                : null,
+        child: Column(children: [
+          Card(
+              color: Colors.white,
+              margin: const EdgeInsets.fromLTRB(16, 8, 16, 8),
+              child: Padding(
+                padding: DisplayUtils.isLargeSize(context)
+                    ? const EdgeInsets.all(32)
+                    : const EdgeInsets.all(16),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      texts.join("\n"),
+                      style: TextStyle(
+                          color: Theme.of(context).colorScheme.primary,
+                          fontSize: DisplayUtils.isLargeSize(context)
+                              ? 20
+                              : DisplayUtils.isMediumSize(context)
+                                  ? 16
+                                  : 12),
+                    ),
+                    DisplayUtils.isLargeSize(context)
+                        ? const SizedBox(height: 32)
+                        : const SizedBox(height: 16),
+                    Text(
+                      subTexts.join("\n"),
+                      style: TextStyle(
+                          color: Theme.of(context).colorScheme.primary,
+                          fontSize: DisplayUtils.isLargeSize(context)
+                              ? 18
+                              : DisplayUtils.isMediumSize(context)
+                                  ? 14
+                                  : 10),
+                    ),
+                  ],
                 ),
-                DisplayUtils.isLargeSize(context)
-                    ? const SizedBox(height: 32)
-                    : const SizedBox(height: 16),
-                Text(
-                  subTexts.join("\n"),
-                  style: TextStyle(
-                      color: Theme.of(context).colorScheme.primary,
-                      fontSize: DisplayUtils.isLargeSize(context)
-                          ? 18
-                          : DisplayUtils.isMediumSize(context)
-                              ? 14
-                              : 10),
-                ),
-              ],
-            ),
-          )),
-    );
+              )),
+          Container(
+              margin: const EdgeInsets.fromLTRB(8.0, 0, 8.0, 0),
+              child: const Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  SnsCard(
+                      imageAssetUrl:
+                          "assets/images/youtube_social_icon_red.png"),
+                  SnsCard(imageAssetUrl: "assets/images/misskey.png"),
+                  Text("<- 色々なリンクが追加できるよ"),
+                ],
+              ))
+        ]));
   }
 }

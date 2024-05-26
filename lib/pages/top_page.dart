@@ -32,27 +32,29 @@ class TopPageState extends State<TopPage> {
     return MainContainer(
         color: Colors.transparent,
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                SizedBox(
-                  width: MediaQuery.of(context).size.width * 0.4,
-                  child: FittedBox(
-                    fit: BoxFit.fitWidth,
-                    child: Text("Flutter Webでつくったよ(建築中)",
-                        style: TextStyle(
-                            color: Theme.of(context).colorScheme.primary)),
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width * 0.5,
+                    child: FittedBox(
+                      fit: BoxFit.fitWidth,
+                      child: Text("Flutter Webでつくったサンプルページだよ",
+                          style: TextStyle(
+                              color: Theme.of(context).colorScheme.primary)),
+                    ),
                   ),
-                ),
-                _introMovieWidget(),
-              ],
-            ),
-          ],
-        ));
+                  _introMovieWidget(),
+                  const SizedBox(
+                    height: 64.0,
+                  ),
+                ],
+              ),
+            ]));
   }
 
   Widget _introMovieWidget() {

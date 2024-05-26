@@ -157,14 +157,30 @@ class _MyHomePageState extends State<MyHomePage>
   }
 
   Widget _titleContainer(BuildContext context) {
-    return Stack(children: [
-      Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Row(
-            children: [
-              Expanded(
-                flex: 1,
-                child: Text(
+    return Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: DisplayUtils.isMediumWidth(context)
+            ? Row(
+                children: [
+                  Expanded(
+                    flex: 1,
+                    child: Text(
+                      widget.title,
+                      style: TextStyle(
+                          color: Theme.of(context).colorScheme.primary,
+                          fontSize: DisplayUtils.isLargeSize(context)
+                              ? 32.0
+                              : DisplayUtils.isMediumSize(context)
+                                  ? 24.0
+                                  : 18.0,
+                          fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                  _titleButtons(),
+                ],
+              )
+            : Column(children: [
+                Text(
                   widget.title,
                   style: TextStyle(
                       color: Theme.of(context).colorScheme.primary,
@@ -175,57 +191,63 @@ class _MyHomePageState extends State<MyHomePage>
                               : 18.0,
                       fontWeight: FontWeight.bold),
                 ),
-              ),
-              TitleButton(
-                  title: "Top",
-                  onPressed: () {
-                    _pageController.animateToPage(
-                      0,
-                      duration: const Duration(milliseconds: 250),
-                      curve: Curves.ease,
-                    );
-                  }),
-              DisplayUtils.isMediumSize(context)
-                  ? const SizedBox(width: 16.0)
-                  : const SizedBox(width: 8.0),
-              TitleButton(
-                  title: "About",
-                  onPressed: () {
-                    _pageController.animateToPage(
-                      1,
-                      duration: const Duration(milliseconds: 250),
-                      curve: Curves.ease,
-                    );
-                  }),
-              DisplayUtils.isMediumSize(context)
-                  ? const SizedBox(width: 16.0)
-                  : const SizedBox(width: 8.0),
-              TitleButton(
-                  title: "Works",
-                  onPressed: () {
-                    _pageController.animateToPage(
-                      2,
-                      duration: const Duration(milliseconds: 250),
-                      curve: Curves.ease,
-                    );
-                  }),
-              DisplayUtils.isMediumSize(context)
-                  ? const SizedBox(width: 16.0)
-                  : const SizedBox(width: 8.0),
-              TitleButton(
-                  title: "Contact",
-                  onPressed: () {
-                    _pageController.animateToPage(
-                      3,
-                      duration: const Duration(milliseconds: 250),
-                      curve: Curves.ease,
-                    );
-                  }),
-              DisplayUtils.isMediumSize(context)
-                  ? const SizedBox(width: 16.0)
-                  : const SizedBox(width: 8.0),
-            ],
-          ))
-    ]);
+                _titleButtons()
+              ]));
+  }
+
+  Widget _titleButtons() {
+    return Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          TitleButton(
+              title: "Top",
+              onPressed: () {
+                _pageController.animateToPage(
+                  0,
+                  duration: const Duration(milliseconds: 250),
+                  curve: Curves.ease,
+                );
+              }),
+          DisplayUtils.isMediumSize(context)
+              ? const SizedBox(width: 16.0)
+              : const SizedBox(width: 8.0),
+          TitleButton(
+              title: "About",
+              onPressed: () {
+                _pageController.animateToPage(
+                  1,
+                  duration: const Duration(milliseconds: 250),
+                  curve: Curves.ease,
+                );
+              }),
+          DisplayUtils.isMediumSize(context)
+              ? const SizedBox(width: 16.0)
+              : const SizedBox(width: 8.0),
+          TitleButton(
+              title: "Works",
+              onPressed: () {
+                _pageController.animateToPage(
+                  2,
+                  duration: const Duration(milliseconds: 250),
+                  curve: Curves.ease,
+                );
+              }),
+          DisplayUtils.isMediumSize(context)
+              ? const SizedBox(width: 16.0)
+              : const SizedBox(width: 8.0),
+          TitleButton(
+              title: "Contact",
+              onPressed: () {
+                _pageController.animateToPage(
+                  3,
+                  duration: const Duration(milliseconds: 250),
+                  curve: Curves.ease,
+                );
+              }),
+          DisplayUtils.isMediumSize(context)
+              ? const SizedBox(width: 16.0)
+              : const SizedBox(width: 8.0),
+        ]);
   }
 }
